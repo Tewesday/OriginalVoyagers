@@ -32,3 +32,7 @@ void ABasicPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 
 }
 
+void ABasicPawn::AssignPath(ACameraRig_Rail* PathToAssign) {
+	Path = PathToAssign;
+}
+

@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include <Runtime\CinematicCamera\Public\CameraRig_Rail.h>
 #include "BasicPawn.generated.h"
+
 
 UCLASS()
 class SEAFARINGPROTOTYPE_API ABasicPawn : public APawn
@@ -26,4 +28,12 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(BlueprintReadWrite)
+	ACameraRig_Rail* Path;
+
+	UFUNCTION(BlueprintCallable)
+	void AssignPath(ACameraRig_Rail* PathToAssign);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void ExecuteInstruction();
 };
