@@ -35,3 +35,17 @@ void UUnitManagementSubsystem::InstructUnits() {
 //		//InstructionFunction(unit);
 //	}
 //}
+
+//void UUnitManagementSubsystem::AssignPathToUnits() {
+//	for (ABasicPawn* unit : Units)
+//	{
+//		unit->AssignPath(Path);
+//	}
+//}
+
+void UUnitManagementSubsystem::AssignPathToUnits(ACameraRig_Rail* PathToAssign) {
+	for (ABasicPawn* unit : Units)
+	{
+		unit->AssignPath(PathToAssign);
+	}
+}

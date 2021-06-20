@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Subsystems/LocalPlayerSubsystem.h"
 #include "BasicPawn.h"
+#include <Runtime\CinematicCamera\Public\CameraRig_Rail.h>
 #include "UnitManagementSubsystem.generated.h"
 
 /**
@@ -19,14 +20,23 @@ class SEAFARINGPROTOTYPE_API UUnitManagementSubsystem : public ULocalPlayerSubsy
 	
 public:
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadWrite)
 	TArray<ABasicPawn*> Units;
+
+	/*UPROPERTY(BlueprintReadWrite)
+	ACameraRig_Rail* Path;*/
 
 	UFUNCTION(BlueprintCallable)
 	void AddSelection(TArray<ABasicPawn*> SelectionToAdd);
 
 	UFUNCTION(BlueprintCallable)
 	void RemoveSelection();
+
+	/*UFUNCTION(BlueprintCallable)
+	void AssignPathToUnits();*/
+
+	UFUNCTION(BlueprintCallable)
+	void AssignPathToUnits(ACameraRig_Rail* PathToAssign);
 
 	UFUNCTION(BlueprintCallable)
 	void InstructUnits();
