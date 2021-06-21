@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Subsystems/LocalPlayerSubsystem.h"
 #include "BasicPawn.h"
+#include "BasicRail.h"
 #include <Runtime\CinematicCamera\Public\CameraRig_Rail.h>
 #include "UnitManagementSubsystem.generated.h"
 
@@ -36,7 +37,7 @@ public:
 	void AssignPathToUnits();*/
 
 	UFUNCTION(BlueprintCallable)
-	void AssignPathToUnits(ACameraRig_Rail* PathToAssign);
+	void AssignPathToUnits(ABasicRail* PathToAssign);
 
 	UFUNCTION(BlueprintCallable)
 	void InstructUnits();

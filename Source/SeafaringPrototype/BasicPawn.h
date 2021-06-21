@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "BasicRail.h"
 #include <Runtime\CinematicCamera\Public\CameraRig_Rail.h>
 #include "BasicPawn.generated.h"
 
@@ -29,10 +30,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UPROPERTY(BlueprintReadWrite)
-	ACameraRig_Rail* Path;
+	ABasicRail* Path;
 
 	UFUNCTION(BlueprintCallable)
-	void AssignPath(ACameraRig_Rail* PathToAssign);
+	void AssignPath(ABasicRail* PathToAssign);
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void ExecuteInstruction();

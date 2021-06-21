@@ -43,7 +43,7 @@ void UUnitManagementSubsystem::InstructUnits() {
 //	}
 //}
 
-void UUnitManagementSubsystem::AssignPathToUnits(ACameraRig_Rail* PathToAssign) {
+void UUnitManagementSubsystem::AssignPathToUnits(ABasicRail* PathToAssign) {
 	for (ABasicPawn* unit : Units)
 	{
 		unit->AssignPath(PathToAssign);
