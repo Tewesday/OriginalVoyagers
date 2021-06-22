@@ -40,11 +40,14 @@ class SEAFARINGPROTOTYPE_API UResourceManagementSubsystem : public UWorldSubsyst
 
 public:
 
-
+	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
 	// Name of Region -> NestedMap -> Name of Resource -> Value in Region
 	UPROPERTY()
 	TMap<FString, FTNestedMap> RegionResourceMap;
+
+	UPROPERTY(BlueprintReadOnly)
+	TArray<FString> ResourceNames;
 
 	UFUNCTION(BlueprintCallable)
 	void AddRegion(FString RegionName);

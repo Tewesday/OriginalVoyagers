@@ -3,6 +3,12 @@
 
 #include "ResourceManagementSubsystem.h"
 
+
+void UResourceManagementSubsystem::Initialize(FSubsystemCollectionBase& Collection) {	
+	ResourceNames.Add(FString("Food"));
+	ResourceNames.Add(FString("Wood"));
+}
+
 void UResourceManagementSubsystem::AddRegion(FString RegionName) {
 	TMap<FString, int32> Resources;
 	FTNestedMap NestedMap;
