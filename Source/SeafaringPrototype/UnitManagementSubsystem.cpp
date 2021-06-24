@@ -8,9 +8,10 @@ void UUnitManagementSubsystem::AddSelection(TArray<ABasicPawn*> SelectionToAdd) 
 }
 
 void UUnitManagementSubsystem::RemoveSelection() {
-	for (int i = Units.Num(); i > 0; i--) {
-		Units.Pop();
-	}
+	Units.Empty();
+	/*for (int i = Units.Num(); i > 0; i--) {
+		Units.Pop(true);
+	}*/
 }
 
 //void UUnitManagementSubsystem::InstructUnits(TFunction<void(ABasicPawn* Unit)> InstructionFunction) {

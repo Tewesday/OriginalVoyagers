@@ -46,7 +46,11 @@ public:
 	UPROPERTY()
 	TMap<FString, FTNestedMap> RegionResourceMap;
 
-	UPROPERTY(BlueprintReadOnly)
+	// Structure Type -> Standardized Structure Cost
+	UPROPERTY()
+	TMap<FString, int32> StructureCostMap;
+
+	UPROPERTY(BlueprintReadWrite)
 	TArray<FString> ResourceNames;
 
 	UFUNCTION(BlueprintCallable)
@@ -70,5 +74,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	int32 RetrieveResourceValue(FString RegionName, FString ResourceName);
 
+	UFUNCTION(BlueprintCallable)
+	void AddStructureToCostMap(FString StructureType, int32 CostOfStructure);
 
+	UFUNCTION(BlueprintCallable)
+	int32 RetrieveStructureCost(FString StructureType);
 };

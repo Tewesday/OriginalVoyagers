@@ -25,3 +25,16 @@ void AResourceActor::Tick(float DeltaTime)
 
 }
 
+int32 AResourceActor::ClampAndApplyQuantityChange(int32 ChangeValue) {
+	int32 ResourceResult = ChangeValue;
+	if (ResourceQuantity - ChangeValue <= 0) {
+		ResourceResult = ResourceQuantity;
+		ResourceQuantity = 0;
+	}
+	else {
+		ResourceQuantity -= ChangeValue;
+	}
+	return ResourceResult;
+}
+
+

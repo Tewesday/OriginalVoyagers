@@ -4,16 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "ResourceActor.generated.h"
+#include "StructureActor.generated.h"
 
 UCLASS()
-class SEAFARINGPROTOTYPE_API AResourceActor : public AActor
+class SEAFARINGPROTOTYPE_API AStructureActor : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AResourceActor();
+	AStructureActor();
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,13 +23,28 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	UPROPERTY(BlueprintReadWrite, EditDefaultsOnly)
+	FString StructureType;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 StructureCost;
+
 	UPROPERTY(BlueprintReadWrite)
 	FString ResourceType;
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 ResourceQuantity;
+	FString OwningRegion;
+
+	UPROPERTY(BlueprintReadWrite)
+	TSet<AActor*> Workers;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 MaxWorkers;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 StructureQuality;
 
 	UFUNCTION(BlueprintCallable)
-	int32 ClampAndApplyQuantityChange(int32 ChangeValue);
+	int32 CalculateResourceCollection();
 
 };

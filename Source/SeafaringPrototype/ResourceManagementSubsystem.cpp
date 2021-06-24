@@ -58,3 +58,12 @@ int32 UResourceManagementSubsystem::RetrieveResourceValue(FString RegionName, FS
 
 	return ResourceValue;
 }
+
+void UResourceManagementSubsystem::AddStructureToCostMap(FString StructureType, int32 CostOfStructure) {
+	StructureCostMap.Add(StructureType, CostOfStructure);
+}
+
+int32 UResourceManagementSubsystem::RetrieveStructureCost(FString StructureType) {
+	int32* StructureCost = StructureCostMap.Find(StructureType);
+	return *(StructureCost);
+}
