@@ -53,6 +53,11 @@ int32 UResourceManagementSubsystem::DecrementResourceByAmount(FString RegionName
 	return UpdatedValue;
 }
 
+void UResourceManagementSubsystem::TransferResourceByAmount(FString RegionNameFrom, FString RegionNameTo, FString ResourceName, int32 ValueTransfer) {
+	DecrementResourceByAmount(RegionNameFrom, ResourceName, ValueTransfer);
+	IncrementResourceByAmount(RegionNameTo, ResourceName, ValueTransfer);
+}
+
 int32 UResourceManagementSubsystem::RetrieveResourceValue(FString RegionName, FString ResourceName) {
 	int32 ResourceValue = *RegionResourceMap.Find(RegionName)->NestedMap.Find(ResourceName);
 

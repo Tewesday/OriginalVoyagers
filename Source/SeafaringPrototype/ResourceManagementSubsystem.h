@@ -75,6 +75,9 @@ public:
 	int32 RetrieveResourceValue(FString RegionName, FString ResourceName);
 
 	UFUNCTION(BlueprintCallable)
+	void TransferResourceByAmount(FString RegionNameFrom, FString RegionNameTo, FString ResourceName, int32 ValueTransfer);
+	
+	UFUNCTION(BlueprintCallable)
 	void AddStructureToCostMap(FString StructureType, int32 CostOfStructure);
 
 	UFUNCTION(BlueprintCallable)
