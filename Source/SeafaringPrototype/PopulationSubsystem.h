@@ -63,7 +63,10 @@ public:
 	int32 DecrementPopulationByAmount(FString RegionName, FString PopulationName, int32 ValueDecrease);
 
 	UFUNCTION(BlueprintCallable)
-	void TransferPopulationByAmount(FString RegionNameFrom, FString RegionNameTo, FString PopulationName, int32 ValueTransfer); /// TOOOOOOOODOOOOOOO
+	int32 TransferPopulationByAmount(FString RegionNameFrom, FString RegionNameTo, FString PopulationName, int32 ValueTransfer);
+
+	UFUNCTION(BlueprintCallable)
+	int32 ClampValue(int32 Value);
 
 	UFUNCTION(BlueprintCallable)
 	int32 RetrievePopulationValue(FString RegionName, FString PopulationName);

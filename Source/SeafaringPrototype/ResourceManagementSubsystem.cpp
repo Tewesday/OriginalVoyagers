@@ -39,7 +39,7 @@ int32 UResourceManagementSubsystem::IncrementResourceByAmount(FString RegionName
 
 int32 UResourceManagementSubsystem::DecrementResource(FString RegionName, FString ResourceName) {
 	int32* ResourceValue = RegionResourceMap.Find(RegionName)->NestedMap.Find(ResourceName);
-	int32 UpdatedValue = *(ResourceValue) - 1;
+	int32 UpdatedValue = ClampValue(*(ResourceValue) - 1);
 	RegionResourceMap.Find(RegionName)->NestedMap.Emplace(ResourceName, UpdatedValue);
 
 	return UpdatedValue;
@@ -47,15 +47,32 @@ int32 UResourceManagementSubsystem::DecrementResource(FString RegionName, FStrin
 
 int32 UResourceManagementSubsystem::DecrementResourceByAmount(FString RegionName, FString ResourceName, int32 ValueDecrease) {
 	int32* ResourceValue = RegionResourceMap.Find(RegionName)->NestedMap.Find(ResourceName);
-	int32 UpdatedValue = *(ResourceValue) - ValueDecrease;
+	int32 UpdatedValue = ClampValue((*(ResourceValue) - ValueDecrease));
 	RegionResourceMap.Find(RegionName)->NestedMap.Emplace(ResourceName, UpdatedValue);
 
 	return UpdatedValue;
 }
 
-void UResourceManagementSubsystem::TransferResourceByAmount(FString RegionNameFrom, FString RegionNameTo, FString ResourceName, int32 ValueTransfer) {
-	DecrementResourceByAmount(RegionNameFrom, ResourceName, ValueTransfer);
+int32 UResourceManagementSubsystem::TransferResourceByAmount(FString RegionNameFrom, FString RegionNameTo, FString ResourceName, int32 ValueTransfer) {
+	int32 StartingValueOfResource = RetrieveResourceValue(RegionNameFrom, ResourceName);
+	
+	if (DecrementResourceByAmount(RegionNameFrom, ResourceName, ValueTransfer) == 0) {
+		ValueTransfer = StartingValueOfResource;
+	}
+
 	IncrementResourceByAmount(RegionNameTo, ResourceName, ValueTransfer);
+
+	return ValueTransfer;
+}
+
+int32 UResourceManagementSubsystem::ClampValue(int32 Value) {
+	if (Value < 0) {
+		Value = 0;
+	}
+	else {
+
+	}
+	return Value;
 }
 
 int32 UResourceManagementSubsystem::RetrieveResourceValue(FString RegionName, FString ResourceName) {
