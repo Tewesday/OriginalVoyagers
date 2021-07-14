@@ -1,4 +1,4 @@
-# OriginalVoyagers
+# The Original Voyagers
  
 See these pages for details on the code behind the most important system in the game.
 https://github.com/Tewesday/OriginalVoyagers/blob/98e8939c72b27d7d71229d1d227e0af8da83e5a0/Source/SeafaringPrototype/ResourceManagementSubsystem.h#L35
